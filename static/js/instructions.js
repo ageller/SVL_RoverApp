@@ -1,3 +1,7 @@
+//functions in here control the instructions screen.  
+//When the app is inactive for params.instructionsTimeout seconds, the instructions will come back on.
+//These instructions can also be made visible by clicking the ? symbol in the upper right of the page.
+
 function instructionsOn() {
 	d3.selectAll('.instructions').transition().duration(500)
 		.style('opacity',1)

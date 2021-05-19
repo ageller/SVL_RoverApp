@@ -1,3 +1,5 @@
+//I will use the params object to contain all the global variables that I want access to throughout the javascript code.
+
 let params;
 function defineParams(){
 	params = new function() {
@@ -14,7 +16,7 @@ function defineParams(){
 
 		this.moving = false;
 		this.movingInterval = null;
-		this.movingDuration = 0.5*1000;//.5 seconds in units of ms
+		this.movingDuration = 1*1000;//1 seconds in units of ms
 	};
 }
 defineParams();

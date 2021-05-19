@@ -1,6 +1,13 @@
-function attachButtons(){
-	//do I need to do this for touch also?
+//functions in here will attach commands to the buttons and execute those commands via an XMLHttpRequest
 
+
+function attachButtons(){
+//attach commands to all the buttons
+
+//do I need to do this for touch also?
+
+
+	//pan
 	d3.selectAll('.pan').on('click',function(){
 		var dir = d3.select(this).attr('id');
 		moveWWT(dir);
@@ -9,13 +16,14 @@ function attachButtons(){
 		d3.select(this).classed('buttonDivActive',true);
 		var dir = d3.select(this).attr('id');
 
-		//will this be choppy?
+		//a bit choppy, but I think this is best that can be done with the Layer Controls API
 		params.movingInterval = setInterval(function(){
 			moveWWT(dir)
 		}, params.movingDuration)
 
 	});
 
+	//zoom
 	d3.selectAll('.zoom').on('click',function(){
 		var dir = d3.select(this).attr('id');
 		moveWWT(dir);
@@ -24,13 +32,14 @@ function attachButtons(){
 		d3.select(this).classed('buttonDivActive',true);
 		var dir = d3.select(this).attr('id');
 
-		//will this be choppy?
+		//a bit choppy, but I think this is best that can be done with the Layer Controls API
 		params.movingInterval = setInterval(function(){
 			moveWWT(dir)
 		}, params.movingDuration)
 
 	});
 
+	//next image
 	//I'm not sure how to change the image (need to add)
 	d3.selectAll('.img').on('click',function(){
 		var dir = d3.select(this).attr('id').replace('Image','');
@@ -50,6 +59,10 @@ function attachButtons(){
 
 
 function moveWWT(dir){
+//use the WWT Layer Controls API to send the move command (when a button is clicked)
+//Note that this gives CORS errors in the browser console, but still appears to work. 
+//I could do this within the flask side, but that doesn't seem necessary here.
+
 	var cmd = params.server + '/layerAPI.aspx?cmd=move&move=' + dir
 	console.log(cmd);
 

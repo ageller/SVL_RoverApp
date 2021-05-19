@@ -1,3 +1,5 @@
+//this runs on load to read in the server information and attach the buttons.
+
 //window.addEventListener('touchstart', restartInstructionsTimeout);
 window.addEventListener('click', restartInstructionsTimeout);
 
