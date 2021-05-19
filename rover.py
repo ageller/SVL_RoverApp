@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = 'secret! the quick brown fox jumps over the lazy DOG'
 
 
 #flask stuff
-@app.route('/')
+@app.route('/Rover')
 def index():  
 	return render_template('index.html')
 
