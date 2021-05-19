@@ -2,12 +2,12 @@ function attachButtons(){
 	//do I need to do this for touch also?
 
 	d3.selectAll('.pan').on('click',function(){
-		var dir = d3.select(this).attr('id').replace('pan','');
+		var dir = d3.select(this).attr('id');
 		moveWWT(dir);
 	});
 	d3.selectAll('.pan').on('mousedown',function(){
 		d3.select(this).classed('buttonDivActive',true);
-		var dir = d3.select(this).attr('id').replace('pan','')
+		var dir = d3.select(this).attr('id');
 
 		//will this be choppy?
 		params.movingInterval = setInterval(function(){
@@ -16,10 +16,25 @@ function attachButtons(){
 
 	});
 
+	d3.selectAll('.zoom').on('click',function(){
+		var dir = d3.select(this).attr('id');
+		moveWWT(dir);
+	});
+	d3.selectAll('.zoom').on('mousedown',function(){
+		d3.select(this).classed('buttonDivActive',true);
+		var dir = d3.select(this).attr('id');
+
+		//will this be choppy?
+		params.movingInterval = setInterval(function(){
+			moveWWT(dir)
+		}, params.movingDuration)
+
+	});
+
+	//I'm not sure how to change the image (need to add)
 	d3.selectAll('.img').on('click',function(){
-		var dir = d3.select(this).attr('id').replace('Image','')
+		var dir = d3.select(this).attr('id').replace('Image','');
 		console.log('changing image', dir);
-		//need to change the image somehow
 	});
 	d3.selectAll('.img').on('mousedown',function(){
 		d3.select(this).classed('buttonDivActive',true);
